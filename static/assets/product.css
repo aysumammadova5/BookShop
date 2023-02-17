@@ -1,0 +1,178 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.prod{
+    display: flex;
+    margin-top: 5%;
+}
+.aba{
+    text-align: right;
+    width: 100em;
+    padding-left: 10%;
+}
+
+.prod>img{
+    width: 300px;
+}
+
+.price{
+    margin-bottom: 5%;
+}
+
+#basket{
+    color: white;
+    opacity: 50%;
+    box-shadow: unset !important;
+}
+.dwnd{
+    display: flex;
+    width: 240px;
+    justify-content: space-between;
+    padding-right: 13%;
+    padding-left: 13%;
+}
+
+#sebet{
+    /* js confing */
+}
+#basket:focus{
+
+    opacity: 100%;
+}
+
+.fa-thumbs-up {
+    font-size: 40px;
+    color: blue;
+    margin-right: 2%;
+    
+}
+
+.fa-thumbs-down{
+    margin-right: 2%;
+    font-size: 40px;
+    color: gray;
+    display: none !important;
+}
+
+.fa-heart{
+    margin-right: 2%;   
+    font-size: 40px;
+    color: gray ;
+}
+
+.fa-xmark{
+    color: red;
+}
+
+.remove{
+    background-color: white;
+    border: 0;
+
+}
+
+#clsmdl{
+    border: 0;
+    background-color: white;
+}
+
+#modal{
+    background-color: rgba(0, 0, 0, 0.559);
+
+
+}
+
+
+
+#count{
+
+    background-color: red;
+    border-radius: 100%;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    color: white;
+    margin-top: 1.5%;
+    padding-right: 0;
+    margin-right: 0;
+}
+
+#removebasket{
+    display: none;
+}
+
+.slider{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0!important;
+    margin-top: 2.5%;
+    padding: 0 !important;
+
+}
+
+.slider img{
+    height: 300px !important;
+    width: 200px !important;
+    padding: 0!important;
+    margin: 0!important;
+}
+
+.slider a{
+    margin: 0% !important;
+    padding: 0% !important;
+    width: 220px !important;
+}
+
+
+.ender{
+    background-color: #17A2B8;
+    padding-top: 2.5%;
+    margin-top: 2%;
+    padding-bottom: 2%;
+    border-bottom: 2px solid white;
+
+}
+
+.ender>h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0 !important;
+    color: white;
+}
+
+
+.card{
+    border:none
+}
+
+
+
+.form-control{
+    height:50px;background-color:#ecf0f3;padding-left:40px
+}
+
+
+
+.form-control:focus{
+    box-shadow:none;background-color:#ecf0f3
+}
+
+.comment{
+    position:relative
+}
+
+
+.comment i{
+    position:absolute;top:18px;left:16px;color:#8fa2b2
+}
+
+
+.comments-box{
+    border:2px solid #17A2B8;border-radius:4px
+}

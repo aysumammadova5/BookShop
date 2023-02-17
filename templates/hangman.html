@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AsilanAdam</title>
+    <link rel="stylesheet" href="../static/assets/hangman.css">
+</head>
+<body>
+
+    <h1>AsilanAdam</h1>
+    <p>Herfleri daxil etmekle gizli sozu tap!</p> 
+    <video autoplay muted loop id="myVideo">
+        <source src="../static/assets/images/videoplayback.mp4" type="video/mp4">
+      </video>
+      <audio controls muted autoplay>
+        <source src="../static/assets/audio/Sid Acharya - Falling Through The Hourglass Beautiful Emotive Ethereal Orchestral.mp3" type="audio/mpeg">
+      </audio> 
+    <div class="game-container">
+        <svg id="fg" height="750" width="700" class="figure-container">
+            <!-- Rod -->
+
+            <line x1="180" y1="100" x2="380" y2="100" />
+            <line x1="340" y1="110" x2="340" y2="160" style="stroke-width: 10px;" />
+            <line x1="180" y1="100" x2="180" y2="520" />
+            <line x1="100" y1="520" x2="260" y2="520" />
+
+            <!-- Head -->
+            <circle cx="340" cy="190" r="30" class="figure-part" id="1" />
+            <!-- Body -->
+            <line x1="340" y1="370" x2="340" y2="200" class="figure-part" id="2" />
+            <!-- Arms -->
+            <line x1="330" y1="280" x2="280" y2="240" class="figure-part" id="3"/>
+            <line x1="350" y1="280" x2="400" y2="240" class="figure-part" id="4"/>
+            <!-- Legs -->
+            <line x1="340" y1="370" x2="400" y2="440" class="figure-part" id="5" />
+            <line x1="340" y1="370" x2="280" y2="440" class="figure-part" id="6"/>
+        </svg>
+
+        <div class="wrong-letters-container">
+            Sehv sozler:
+            <div id="wrong-letters"></div>
+        </div>
+        <div class="word" id="word"></div>
+    </div>
+
+    <!-- Container for final message -->
+    <div class="popup-container" id="popup-container">
+        <div class="popup">
+            <h2 id="final-message"></h2>
+            <button id="play-button">Yeniden Oyna</button>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification-container" id="notification-container">
+        <p>Bu herf artig daxil edilib!</p>
+    </div>
+    <div class="notification-container" id="notification-container2">
+        <p>Bu herf deyil!</p>
+    </div>
+    <script src="../static/assets/hangman.js"></script>
+</body>
+</html>

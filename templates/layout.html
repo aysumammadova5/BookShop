@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/layout.css') }}">
+  {% if request.path=='/' %}
+  <!-- index head -->
+          <link rel="stylesheet" href="{{ url_for('static', filename='assets/index.css') }}">
+          <title>Ana Sehife</title>
+  <!-- index head -->
+  {% else %}
+  <!-- product head -->
+          <link rel="stylesheet" href="{{ url_for('static', filename='assets/product.css') }}">
+          <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/slick/slick.css') }}"/>
+          <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/slick/slick-theme.css') }}"/>
+          <title>Product</title>
+  <!-- product head -->
+  {% endif %}
+  <link rel="shortcut icon" href="{{url_for('static', filename='assets/images/c039b824474525.56334ce736de9.jpg') }}">
+</head>
+<body>
+  
+  {% if request.path=='/' %}
+  <!-- index cdn -->
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <!-- index cdn -->
+  {% else %}
+  <!-- product cdn -->
+          <script src="https://kit.fontawesome.com/7270dbc050.js" crossorigin="anonymous"></script>
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <!-- product cdn -->
+  {% endif %}
+  <nav class="navbar navbar-expand-lg navbar-light ">
+      <div class="container">
+      <a class="navbar-brand" href="/">KITAB MAGAZASI</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+        {% if request.path=='/' or request.path=='/signin' or request.path=='/signup' or request.path=='/haqqimizda'  %}
+        {% else %}
+        <!-- product basket -->
+        <p id="count"> </p>
+          <div class="btn-group">
+            <button  type="button" id="basket" class=" dropdown btn   dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-basket-shopping"></i>
+            </button>
+            <ul id="sebet" class="dropdown-menu">
+              <span id="bskt_tp">
+              <li class="dwnd"><span class="prodbio"><button class="remove"><i class="fa-solid fa-xmark"></i></button>1984</span> <span class="prodpr" id="p_1984">16AZN</span></li>
+              <li class="dwnd"><span class="prodbio"><button class="remove"><i class="fa-solid fa-xmark"></i></button>Sefirler</span> <span class="prodpr" id="p_sefirler">21AZN</span></li>
+              </span>
+              <li><hr class="dropdown-divider"></li>
+              <span id="bskt_btm">
+              </span>
+            </ul>
+          </div>
+          <!-- product basket -->
+          {% endif %}
+
+          <ul class="navbar-nav" >
+          <li class="nav-item">
+              <a {% if request.path=='/' %} class="nav-link active" {% else %} class="nav-link text" {% endif %} aria-current="page" href="/">Ana sehife</a>
+          </li>
+          <li class="nav-item">
+              <a {% if request.path=='/haqqimizda' %} class="nav-link active" {% else %} class="nav-link text" {% endif %} href="/haqqimizda">Haqqimizda</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link text" href="#">Kateqoriyalar</a>
+          </li>
+          <li class="nav-item">
+              <a {% if request.path=='/product' %} class="nav-link active" {% else %} class="nav-link text" {% endif %} href="/product">Ayin kitabi</a>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Istifadeci
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              {% if current_user.is_authenticated %}
+              <li><a class="dropdown-item" href="#">{{current_user.first_name}} {{current_user.last_name}}</a></li>
+              <li><a class="dropdown-item" href="/signout">Cixis</a></li>
+              {% else %}
+              <li><a class="dropdown-item" href="/signin">Giris</a></li>
+              <li><a class="dropdown-item" href="/signup">Qeydiyyatdan kec</a></li>
+              {% endif %}
+
+
+              </ul>
+          </li>
+          </ul>
+      </div>
+      </div>
+  </nav>
+    <section>
+      {% block content %}
+
+      {% endblock %}
+
+        
+  </section>  
+  
+<footer {% if request.path=='/signin' or request.path=='/signup' or request.path=='/haqqimizda' %} style="position: absolute; bottom:0%" {% endif %}>
+  <p>Copyright © E-mağaza layihəsi</p>
+</footer>
+      {% if request.path=='/' %}
+      <!-- index script -->
+              <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+              <script src="{{ url_for('static', filename='assets/index.js') }}"></script>
+      <!-- index script -->
+      {% else %}
+      <!-- product script -->
+              <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+              <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+              <script type="text/javascript" src="{{ url_for('static', filename='assets/slick/slick.min.js') }}"></script>   
+              <script src="{{ url_for('static', filename='assets/product.js') }}"></script>
+      <!-- product script -->
+      {% endif %}
+</body>
+</html>

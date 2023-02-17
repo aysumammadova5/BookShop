@@ -1,0 +1,154 @@
+.books{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card{
+    margin-top: 3%;
+}
+
+.bshl{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bolder;
+    margin-top: 3%;
+    font-family: Roboto;
+}
+
+.btno{
+    background-color: #17A2B8;
+    border: 0;
+}
+
+.btno:hover{
+    background-color: #1991a3;
+}
+
+.jumbotron>img{
+    width: 100%;
+    border-radius: 5px;
+}
+
+.jumbotron{
+    margin-top: 5%;
+    background-image: url(../assets/images/jumbotron.jpg);
+    padding: 5% 0;
+    align-items: center !important;
+    display: flex !important ;
+    color: white !important;    
+    border-radius: 5px;
+    font-family: Roboto;
+}
+#calcbutton>a{
+    color: black;
+    text-decoration: none;
+    font-family: Roboto;
+}
+#calcbutton{
+    margin-bottom: 2%;
+    border: 0;
+    background-color: #FFC107;
+    width: 93px;
+    height: 48px;
+    border-radius: 5px;
+
+}
+#calcbutton:active{
+    background-color: #ca9801;
+}
+
+
+
+      
+.number-spinner {
+    max-width: 150px;
+    line-height: 40px;
+    padding: 0;
+    margin: 0;
+    border-radius: 8px;
+    border: 2px solid #e2e2e2;
+    overflow: hidden;
+    position: relative;
+    display: table;
+  }
+  .number-spinner input {
+    height: 40px;
+    max-height: 40px;
+    line-height: 40px;
+    font-size: 1em;
+    padding: 0;
+    margin: 0;
+    border: none;
+    position: relative;
+    float: left;
+    width: 100%;
+    text-align: center;
+  }
+  .number-spinner input:focus {
+    outline: none;
+  }
+  .number-spinner .ns-btn {
+    position: relative;
+    font-size: 0;
+    white-space: nowrap;
+    vertical-align: middle;
+    display: table-cell;
+    cursor: pointer;
+  }
+  .number-spinner .ns-btn>a {
+    height: 40px;
+    min-height: 40px;
+    width: 40px;
+    padding: 0;
+    max-width: 40px;
+    line-height: 40px;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    color: rgb(255, 255, 255);
+    display: inline-block;
+    vertical-align: middle;
+    text-decoration: none;
+  }
+  .ns1:active{
+      border: 3px solid rgba(255, 0, 0, 0.461);
+      border-radius: 8px;
+  }
+
+  .ns2:active{
+      border-radius: 8px;
+      border: 3px solid rgba(0, 221, 18, 0.416);
+  }
+  .down{
+    background-color: red;
+  }
+
+  .up{
+      background-color: rgb(6, 204, 6);
+  }
+  .number-spinner .ns-btn .icon-minus:after {
+    content: "−";
+    font-size: 35px;
+    line-height: 38px;
+    font-weight: bold;
+  }
+  .number-spinner .ns-btn .icon-plus:after {
+    content: "+";
+    font-size: 38px;
+    line-height: 35px;
+    font-weight: bold;
+  }
+
+.calcinpt{
+    display: flex;
+    justify-content: space-between;
+}
+
+.grid-item{
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+

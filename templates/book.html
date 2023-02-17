@@ -1,0 +1,175 @@
+        
+{% extends 'layout.html' %}
+
+{% block content %}
+        <section class="mb-5">
+          <div class="modal" tabindex="-1" role="dialog" id="modal">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Bildiris</h5>
+                  <button type="button" class="close" data-dismiss="modal" id="clsmdl" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Mehsul sebete elave edilildi!</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal" id="mdlcls">Bagla</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+            <div class="container"> 
+            <div class="prod">
+                <img src="{{book.image_url}}" alt=":/">
+                <div class="aba">
+                   <h2><span id="name">{{book.title}}</span> (beynin gizli heyati)</h2>
+                    <p class="price text-success"><b id="p_inkognito">{{book.price}}AZN</b> <span class="text-danger"><del>15AZN</del></span></p>
+
+                  <p class="bio">{{book.desc}}</p>
+                    
+                    <i id="hup" class="fa-solid fa-thumbs-up"></i>
+                    <i id="hdw" class="fa-solid fa-thumbs-down"></i>
+                    <i id="hrt" class="fa-solid fa-heart"></i>
+                    <button id="addbasket" type="button"  class="btn btn-secondary bg-info border-0" >Sebete elave et</button>
+                    <button id="removebasket" type="button"  class="btn btn-secondary border-0" >Sebetden cixart</button>
+                    
+                </div>
+            </div>
+ 
+            <div id="alerts" class="alert alert-warning text-center mb-4 mt-4" role="alert">
+              Bu kitabdan cemi <span id="stock">{{book.stock}}</span> eded qalib
+            </div>
+            <div class="end">
+            <h3 class="text-center">XUSUSIYETLER</h3>
+            <table class="table table-striped">
+
+                <tbody>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Xususiyet</th>
+                        <th scope="col">Aciqlama</th>
+                      </tr>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Dil:</td>
+                    <td>{{lang.lang_name}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Janr:</td>
+                    <td>{{genre.name}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Muellif:</td>
+                    <td>{{book.author}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">4</th>
+                    <td>Nesriyyat:</td>
+                    <td>{{book.publisher}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <h3 class="text-center">SERHYAZ</h3>
+              <form action="" method="POST">
+                <div class="form-group">
+                  <label for="formGroupExampleInput">Tam adiniz:</label>
+                  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Ad Soyad">
+                </div>
+                <label>Hansi dilde oxumusnuz?</label>
+            </select>
+            <select class="form-control">
+                <option>Azerbaycanca</option>
+                <option>Turkce</option>
+                <option>Inglis</option>
+            </select>
+            <label>Qiymetlendirme:</label>
+                <div class="form-group">
+                  <input type="range" class="form-control-range w-100" id="formControlRange">
+                </div>
+
+            
+
+            {% from "_formhelpers.html" import render_field %}
+            
+              {{form.csrf_token}}
+              {{ render_field(form.text) }}
+
+            
+
+
+            <div class="form-check form-switch">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Bu kitabı oxumusunuzmu?</label>
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+              </div>
+              {% if current_user.is_authenticated %}
+              <button  class="btn btn-primary"  type="submit">Gonder</button>
+              {% else %}
+                <p style="color: red;">Paylasmaq ucun <a href="/signup">qeydiyyatdan kec</a> ve ya hesabin varsa <a href="/signin">daxil ol</a> </p>
+              {% endif %}
+
+
+              </form>
+              <h3 class="text-center">SERHLER</h3>
+              {% for comment in comments %}
+                  {% if comment.book_id==book.id %}
+
+                  <div class="row d-flex">
+                    <div class="col">
+                        <div class="card ">
+                            <div class="comments-box p-3 mt-3">
+                                <div class="d-flex justify-content-between align-items-center"> <span class="text-muted">{{(user[(comment.user_id)-1])}}</span> <span class="text-muted">{{comment.time}}</span> </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="text-muted">{{comment.text}}</h5> 
+                                </div>
+                                <div> <span>{{(user[(comment.user_id)-1]).first_name}} {{(user[(comment.user_id)-1]).last_name}}</span> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% endif %}
+
+
+              {% endfor %}
+
+
+ 
+               
+            
+
+
+
+
+            </div>      
+        </div>
+        <div class="ender">
+          <h2>Butun kitablar</h2>
+        <div class="slider">
+          <a href="/book/3"><img src="{{ url_for('static', filename='assets/images/9780062387950.jpg') }}" alt=""> </a>
+          <a href="/book/2"><img src="{{ url_for('static', filename='assets/images/9780063067769.jpg') }}" alt=""></a>
+          <a href="/book/4"><img src="{{ url_for('static', filename='assets/images/9780385338608.jpg') }}" alt=""></a>
+          <a href="/book/5"><img src="{{ url_for('static', filename='assets/images/9780525564805.jpg') }}" alt=""></a>
+          <a href="/book/6"><img src="{{ url_for('static', filename='assets/images/9780679722618.jpg') }}" alt=""></a>
+          <a href="/book/1"> <img src="{{ url_for('static', filename='assets/images/Inkognito.png') }}" alt=""></a>
+          <a href="/book/3"><img src="{{ url_for('static', filename='assets/images/9780062387950.jpg') }}" alt=""> </a>
+          <a href="/book/2"><img src="{{ url_for('static', filename='assets/images/9780063067769.jpg') }}" alt=""></a>
+          <a href="/book/4"><img src="{{ url_for('static', filename='assets/images/9780385338608.jpg') }}" alt=""></a>
+          <a href="/book/5"><img src="{{ url_for('static', filename='assets/images/9780525564805.jpg') }}" alt=""></a>
+          <a href="/book/6"><img src="{{ url_for('static', filename='assets/images/9780679722618.jpg') }}" alt=""></a>
+          <a href="/book/1"> <img src="{{ url_for('static', filename='assets/images/Inkognito.png') }}" alt=""></a>
+          <a href="/book/3"><img src="{{ url_for('static', filename='assets/images/9780062387950.jpg') }}" alt=""> </a>
+          <a href="/book/2"><img src="{{ url_for('static', filename='assets/images/9780063067769.jpg') }}" alt=""></a>
+          <a href="/book/4"><img src="{{ url_for('static', filename='assets/images/9780385338608.jpg') }}" alt=""></a>
+          <a href="/book/5"><img src="{{ url_for('static', filename='assets/images/9780525564805.jpg') }}" alt=""></a>
+          <a href="/book/6"><img src="{{ url_for('static', filename='assets/images/9780679722618.jpg') }}" alt=""></a>
+          <a href="/book/1"> <img src="{{ url_for('static', filename='assets/images/Inkognito.png') }}" alt=""></a>
+
+        </div>
+      </div>
+      {% endblock %}     

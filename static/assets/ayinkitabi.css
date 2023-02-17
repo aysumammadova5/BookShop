@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.text{
+    opacity: 50% !important;
+    transition: all 0.3s ease 0s !important;
+    color: white !important ;
+}
+.text:hover{
+    opacity: 80% !important;
+}
+
+.navbar-brand{
+    color: white !important;
+}
+footer{
+    background-color: #17A2B8;
+    height: 70px;
+    font-family: Roboto;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 100%  ;
+}
+footer>p{
+    padding: 0;
+    margin: 0;
+}
+img{
+    width: 100%;
+}

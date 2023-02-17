@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+{% from "_formhelpers.html" import render_field %}
+
+{% block content %}
+<form class='sign' action="" method="POST">
+    {{form.csrf_token}}
+    {{ render_field(form.email) }}
+    {{ render_field(form.password) }}
+    <p style="color: red;"> {{alert}} </p>
+    <p style="color: rgb(150, 23, 23);">Eger hesabiniz yoxdursa <a href="/signup">qeydiyatdan kecin</a></p>
+    <button class="btn btn-primary" type="submit">Daxil ol</button>
+
+</form>
+{% endblock %}
